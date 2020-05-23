@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import Scream from '../components/Scream'
+import Spinner from '../components/Spinner'
 import { baseUrl } from '../utils/baseUrl'
 
 class home extends Component {
@@ -19,11 +20,12 @@ class home extends Component {
 			.catch(err => {
 				console.log(err)
 			})
-  }
+	}
+	
   render() {
 		let recentScreamsMarkup = this.state.screams ? (
-			this.state.screams.map(scream => <Scream scream={scream}/>)
-		) : <p>Loading...</p>
+			this.state.screams.map(scream => <Scream key={scream.screamId} scream={scream}/>)
+		) : <Spinner />
     return (
       <Grid container spacing={16}>
         <Grid item sm={8} xs={12}>

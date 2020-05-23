@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import Spinner from '../components/Spinner'
 
 class signup extends Component {
     render() {
         return (
             <div>
-                <h1>Sign up page</h1>
+                <Spinner/>
             </div>
         )
     }
