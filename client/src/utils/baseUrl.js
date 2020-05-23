@@ -1,0 +1,1 @@
+exports.baseUrl ='https://us-central1-socialape-4a244.cloudfunctions.net/api'
