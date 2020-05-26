@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
-import Scream from '../components/Scream'
-import Spinner from '../components/Spinner'
-import { baseUrl } from '../utils/baseUrl'
+import Scream from '../components/Scream';
+import Spinner from '../components/Spinner';
+import Profile from '../components/Profile'
+import { baseUrl } from '../utils/baseUrl';
 
 class home extends Component {
   state = {
@@ -32,7 +33,7 @@ class home extends Component {
           {recentScreamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>Profile..</p>
+          <Profile />
         </Grid>
       </Grid>
     );
