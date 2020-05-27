@@ -64,6 +64,7 @@ const styles = theme => ({
     }
   },
   buttons: {
+    display: 'block',
     textAlign: 'center',
     '& a': {
       margin: '20px 10px'
@@ -159,7 +160,7 @@ class Profile extends Component {
         <Paper className={classes.paper}>
           <Typography variant='body2' align='center'>
             No profile found, please login
-            <div className={classes.buttons}>
+            <span className={classes.buttons}>
               <Button
                 varient='contained'
                 color='primary'
@@ -176,7 +177,7 @@ class Profile extends Component {
               >
                 Sign Up
               </Button>
-            </div>
+            </span>
           </Typography>
         </Paper>
       )
