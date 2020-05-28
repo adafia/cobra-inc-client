@@ -3,9 +3,13 @@ import { baseUrl } from '../../utils/baseUrl';
 import {
   SET_SCREAMS,
   LOADING_DATA,
+  LOADING_UI,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
-  DELETE_SCREAM
+  DELETE_SCREAM,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  POST_SCREAM
 } from '../types';
 
 export const getScreams = () => dispatch => {
@@ -26,6 +30,28 @@ export const getScreams = () => dispatch => {
       });
     });
 };
+
+export const postScream = (newScream) => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post(`${baseUrl}/scream`, newScream)
+    .then(res => {
+      dispatch({
+        type: POST_SCREAM,
+        payload: res.data
+      });
+      dispatch({ type: CLEAR_ERRORS })
+    })
+    .catch(err => {
+			console.log(err)
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
+
 
 export const likeScream = screamId => dispatch => {
   axios
