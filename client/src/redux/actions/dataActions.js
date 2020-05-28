@@ -2,8 +2,10 @@ import axios from 'axios';
 import { baseUrl } from '../../utils/baseUrl';
 import {
   SET_SCREAMS,
+  SET_SCREAM,
   LOADING_DATA,
   LOADING_UI,
+  STOP_LOADING_UI,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
   DELETE_SCREAM,
@@ -29,6 +31,20 @@ export const getScreams = () => dispatch => {
         payload: []
       });
     });
+};
+
+export const getScream = (screamId) => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`${baseUrl}/scream/${screamId}`)
+    .then(res => {
+      dispatch({
+        type: SET_SCREAM,
+        payload: res.data
+      });
+      dispatch({ type: STOP_LOADING_UI })
+    })
+    .catch(err => console.log(err));
 };
 
 export const postScream = (newScream) => dispatch => {
@@ -88,3 +104,10 @@ export const deleteScream = screamId => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const clearErrors = () => dispatch => {
+  dispatch({
+    type: CLEAR_ERRORS
+  });
+};
+
