@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import MyButton from '../../utils/MyButton';
 import LikeButton from './LikeButton';
 import Comments from './Comments';
+import CommentForm from './CommentForm';
 
 // MUI
 import Typography from '@material-ui/core/Typography';
@@ -24,7 +25,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 // Redux
 import { connect } from 'react-redux';
-import { getScream } from '../../redux/actions/dataActions';
+import { getScream, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.formStyles,
@@ -51,9 +52,9 @@ const styles = theme => ({
     marginButtom: 50
   },
   visibleSeparator: {
-	width: '100%',
-	borderBottom: '1px solid rgba(0,0,0,0.1)',
-	marginButtom: 20
+    width: '100%',
+    borderBottom: '1px solid rgba(0,0,0,0.1)',
+    marginButtom: 20
   }
 });
 
@@ -68,6 +69,7 @@ class ScreamDialog extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+    this.props.clearErrors();
   };
   render() {
     const {
@@ -79,8 +81,8 @@ class ScreamDialog extends Component {
         likeCount,
         commentCount,
         userImage,
-		userHandle,
-		comments
+        userHandle,
+        comments
       },
       UI: { loading }
     } = this.props;
@@ -116,8 +118,9 @@ class ScreamDialog extends Component {
           </MyButton>
           <span>{commentCount} comments</span>
         </Grid>
-		<hr className={classes.visibleSeparator} />
-		<Comments comments={comments} />
+        <hr className={classes.visibleSeparator} />
+        <CommentForm screamId={screamId} />
+        <Comments comments={comments} />
       </Grid>
     );
     return (
@@ -153,6 +156,7 @@ class ScreamDialog extends Component {
 
 ScreamDialog.propTypes = {
   getScream: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   screamId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
   scream: PropTypes.object.isRequired,
@@ -165,7 +169,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  getScream
+  getScream,
+  clearErrors
 };
 
 export default connect(
