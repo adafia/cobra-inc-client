@@ -41,6 +41,10 @@ export default {
     },
     progress: {
       position: 'absolute'
-    }
+    },
+    invisibleSeparator: {
+      border: 'none',
+      margin: 4
+    },
   }
 };
