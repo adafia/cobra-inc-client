@@ -48,6 +48,25 @@ export const getScream = (screamId) => dispatch => {
     .catch(err => console.log(err));
 };
 
+export const getUserData = (userHandle) => dispatch => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get(`${baseUrl}/user/${userHandle}`)
+    .then(res => {
+      dispatch({
+        type: SET_SCREAMS,
+        payload: res.data.screams
+      });
+    })
+    .catch(err => {
+			console.log(err)
+      dispatch({
+        type: SET_SCREAMS,
+        payload: null
+      });
+    });
+};
+
 export const postScream = (newScream) => dispatch => {
   dispatch({ type: LOADING_UI });
   axios
