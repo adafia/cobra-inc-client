@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { baseUrl } from '../utils/baseUrl';
 import Scream from '../components/scream/Scream';
+import ScreamSkeleton from '../utils/ScreamSkeleton';
+import ProfileSkeleton from '../utils/ProfileSkeleton';
 import StaticProfile from '../components/profile/StaticProfile';
 
 // Redux
@@ -38,7 +40,7 @@ class user extends Component {
     const { screamIdParam } = this.state;
 
     const screamsMarkup = loading ? (
-      <p>Loading data ...</p>
+      <ScreamSkeleton />
     ) : screams === null ? (
       <p>No posts from this user</p>
     ) : !screamIdParam ? (
@@ -59,7 +61,7 @@ class user extends Component {
         </Grid>
         <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (
-            <p>Loading profile..</p>
+            <ProfileSkeleton />
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}

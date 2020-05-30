@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Scream from '../components/scream/Scream';
-import Spinner from '../components/Spinner';
+import ScreamSkeleton from '../utils/ScreamSkeleton';
 import Profile from '../components/profile/Profile';
 import PropTypes from 'prop-types';
 
@@ -19,7 +19,7 @@ class home extends Component {
     let recentScreamsMarkup = !loading ? (
       screams.map(scream => <Scream key={scream.screamId} scream={scream} />)
     ) : (
-      <Spinner />
+      <ScreamSkeleton />
     );
     return (
       <Grid container spacing={2}>
