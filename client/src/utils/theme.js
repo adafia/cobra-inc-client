@@ -18,7 +18,8 @@ export default {
   },
   formStyles: {
     form: {
-      textAlign: 'center'
+      textAlign: 'center',
+      verticalAlign: 'middle'
     },
     image: {
       margin: '20px auto 20px, auto',

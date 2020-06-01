@@ -10,6 +10,7 @@ import { loginUser } from '../redux/actions/userAction'
 
 // MUI
 import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -45,6 +46,9 @@ class login extends Component {
 
   handleChange = event => {
     this.setState({
+      errors: {}
+    })
+    this.setState({
       [event.target.name]: event.target.value
     });
   };
@@ -52,7 +56,14 @@ class login extends Component {
     const { classes, UI: { loading } } = this.props;
     const { errors } = this.state;
     return (
-      <Grid container className={classes.form}>
+      <Grid 
+        container 
+        className={classes.form}
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: '80vh' }}
+      >
+        <Card style={{ padding: 30 }}>
         <Grid item sm />
         <Grid item sm>
           <img src={AppIcon} alt='cobra Inc logo' className={classes.image} />
@@ -106,6 +117,7 @@ class login extends Component {
           </form>
         </Grid>
         <Grid item sm />
+        </Card>
       </Grid>
     );
   }
