@@ -21,3 +21,6 @@ This is the front-end of a simple twitter clone.
  - Redux-thunx - (asynchronous calls to the API)
  - Material-UI - (styling)
  - Day JS - (Date formatting)
+
+## Author
+ - Samuel Adafia
