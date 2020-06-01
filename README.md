@@ -22,5 +22,8 @@ This is the front-end of a simple twitter clone.
  - Material-UI - (styling)
  - Day JS - (Date formatting)
 
+## Screenshots
+![Home page](/screenshots/cobra-inc-home-page.PNG?raw=true "Home Page")
+
 ## Author
  - Samuel Adafia
