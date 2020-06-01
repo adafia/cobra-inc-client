@@ -34,7 +34,8 @@ const styles = theme => ({
     ['@media only screen and (max-width: 600px)']: {
       height: 100,
       position: 'relative',
-      borderRadius: '5%'
+      borderRadius: '5%',
+      marginRight: 20
     }
   },
   dialogContent: {
@@ -59,7 +60,12 @@ const styles = theme => ({
   },
   expandButton: {
     position: 'absolute',
-    left: '90%'
+    left: '90%',
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: '11px',
+      left: '87%',
+      bottom: '0.5%'
+    }
   },
   spinnerDiv: {
     textAlign: 'center',
@@ -70,7 +76,17 @@ const styles = theme => ({
     width: '100%',
     borderBottom: '1px solid rgba(0,0,0,0.1)',
     marginButtom: 20
-  }
+  },
+  reactionIcon: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: 13 
+    }
+  },
+  reactionTxt: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: 12
+    }
+  },
 });
 
 class ScreamDialog extends Component {
@@ -145,11 +161,11 @@ class ScreamDialog extends Component {
           <hr className={classes.invisibleSeparator} />
           <Typography variant='body1'>{body}</Typography>
           <LikeButton screamId={screamId} />
-          <span>{likeCount} likes</span>
+          <span className={classes.reactionTxt}>{likeCount} likes</span>
           <MyButton tip='Comments'>
-            <ChatIcon color='primary' />
+            <ChatIcon className={classes.reactionIcon} color='primary' />
           </MyButton>
-          <span>{commentCount} comments</span>
+          <span className={classes.reactionTxt}>{commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
         <CommentForm screamId={screamId} />

@@ -39,7 +39,17 @@ const styles = {
 	content: {
 		padding: 25,
 		objectFit: 'cover'
-	}
+  },
+  reactionTxt: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: 12
+    }
+  },
+  reactionIcon: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: 13
+    }
+  }
 };
 
 class Scream extends Component {
@@ -84,11 +94,11 @@ class Scream extends Component {
           </Typography>
           <Typography variant='body1'>{body}</Typography>
           <LikeButton screamId={screamId}/>
-          <span>{likeCount} likes</span>
+          <span className={classes.reactionTxt}>{likeCount} likes</span>
           <MyButton tip="Comments">
-            <ChatIcon color="primary"/>
+            <ChatIcon className={classes.reactionIcon} color="primary"/>
           </MyButton>
-          <span>{commentCount} comments</span>
+          <span className={classes.reactionTxt}>{commentCount} comments</span>
           <ScreamDialog screamId={screamId} userHandle={userHandle} openDialog={this.props.openDialog}/>
         </CardContent>
       </Card>

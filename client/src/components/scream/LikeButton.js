@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../utils/MyButton';
 
 // Redux
@@ -10,6 +11,15 @@ import { likeScream, unlikeScream } from '../../redux/actions/dataActions';
 //Icon
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+
+
+const styles = {
+  reactionIcon: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: 13 
+    }
+  }
+};
 
 class LikeButton extends Component {
 	likedScream = () => {
@@ -33,16 +43,16 @@ class LikeButton extends Component {
     const likeButton = !authenticated ? (
       <Link to='/login'>
 				<MyButton tip='Like'>
-          <FavoriteBorder color='secondary' />
+          <FavoriteBorder className={this.props.classes.reactionIcon} color='secondary' />
       	</MyButton>
 			</Link>
     ) : this.likedScream() ? (
       <MyButton tip='Undo Like' onClick={this.unlikeScream}>
-        <Favorite color='secondary' />
+        <Favorite className={this.props.classes.reactionIcon} color='secondary' />
       </MyButton>
     ) : (
       <MyButton tip='Like' onClick={this.likeScream}>
-        <FavoriteBorder color='secondary' />
+        <FavoriteBorder className={this.props.classes.reactionIcon} color='secondary' />
       </MyButton>
     );
     return likeButton;
@@ -53,7 +63,8 @@ LikeButton.propTypes = {
   likeScream: PropTypes.func.isRequired,
   unlikeScream: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  screamId: PropTypes.string.isRequired
+  screamId: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -65,4 +76,4 @@ const mapActionsToProps = {
   unlikeScream
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(LikeButton);
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(LikeButton));

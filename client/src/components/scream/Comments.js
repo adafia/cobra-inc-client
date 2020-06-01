@@ -12,16 +12,29 @@ const styles = theme => ({
   ...theme.formStyles,
   commentImage: {
     maxWidth: '100%',
-    height: 100,
+    height: 50,
     objectFit: 'cover',
-    borderRadius: '50%',
+    borderRadius: '25%',
     ['@media only screen and (max-width: 600px)']: {
-      height: 50,
+      height: 40,
       borderRadius: '25%'
     }
   },
   commentData: {
-    marginLeft: 20
+    marginLeft: 5,
+    ['@media only screen and (max-width: 600px)']: {
+      marginLeft: 10
+    }
+  },
+  comment: {
+    marginLeft: 20,
+    ['@media only screen and (max-width: 600px)']: {
+      marginLeft: 10
+    }
+  },
+  visibleSeparator: {
+    width: '100%',
+    margin: 20
   },
   handle: {
     ['@media only screen and (max-width: 600px)']: {
@@ -33,6 +46,13 @@ const styles = theme => ({
       fontSize: '12px'
     }
   },
+  body: {
+    marginLeft: 115,
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: '14px',
+      marginLeft: 60,
+    }
+  }
 });
 
 class Comments extends Component {
@@ -44,7 +64,7 @@ class Comments extends Component {
           const { body, createdAt, userImage, userHandle } = comment;
           return (
             <Fragment key={createdAt}>
-              <Grid item sm={12}>
+              <Grid className={classes.comment} item sm={12}>
                 <Grid container>
                   <Grid item sm={2}>
                     <img
@@ -68,9 +88,13 @@ class Comments extends Component {
                         {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                       </Typography>
                       <hr className={classes.invisibleSeparator} />
-                      <Typography variant='body1'>{body}</Typography>
                     </div>
                   </Grid>
+                </Grid>
+              </Grid>
+              <Grid container>
+                <Grid item sm={12}>
+                  <Typography className={classes.body} variant='body1'>{body}</Typography>
                 </Grid>
               </Grid>
               {index !== comments.length - 1 && (
