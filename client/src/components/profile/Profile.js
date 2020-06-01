@@ -21,8 +21,8 @@ import Typography from '@material-ui/core/Typography';
 import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
-import EditIcon from '@material-ui/icons/Edit';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 
 const styles = theme => ({
   ...theme.formStyles
@@ -71,7 +71,7 @@ class Profile extends Component {
 								hidden="hidden"
               />
               <MyButton tip="Edit profile picture" onClick={this.handleEditPicture} btnClassName="button">
-                <EditIcon color="primary"/>
+                <PhotoCameraIcon color="primary"/>
               </MyButton>
             </div>
             <hr />

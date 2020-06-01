@@ -60,11 +60,10 @@ export default {
         }
       },
       '& .profile-image': {
-        width: 200,
         height: 200,
         objectFit: 'cover',
         maxWidth: '100%',
-        borderRadius: '50%'
+        borderRadius: '5%'
       },
       '& .profile-details': {
         textAlign: 'center',

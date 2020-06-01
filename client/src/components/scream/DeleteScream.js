@@ -21,7 +21,11 @@ const styles = {
 	deleteButton: {
 		position: 'absolute',
 		top: '10%',
-		left: '90%'
+		left: '90%',
+		['@media only screen and (max-width: 600px)']: {
+			left: '87%',
+			top: '2%',
+		  }
 	}
 };
 

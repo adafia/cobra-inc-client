@@ -30,7 +30,11 @@ const styles = {
 	},
 	image: {
 		minWidth: 200,
-		objectFit: 'cover'
+    objectFit: 'cover',
+    ['@media only screen and (max-width: 600px)']: {
+      minWidth: '35%',
+      objectFit: 'cover'
+    }
 	},
 	content: {
 		padding: 25,
@@ -40,7 +44,7 @@ const styles = {
 
 class Scream extends Component {
   render() {
-		dayjs.extend(relativeTime)
+    dayjs.extend(relativeTime)
     const {
       classes,
       scream: {
@@ -64,7 +68,7 @@ class Scream extends Component {
     ) : null
     return (
       <Card className={classes.card}>
-        <CardMedia image={userImage} title='Profile image' className={classes.image}/>
+        <CardMedia image={userImage} id="phone" title='Profile image' className={classes.image}/>
         <CardContent className={classes.content}>
           <Typography
             varient='h5'

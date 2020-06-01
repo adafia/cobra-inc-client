@@ -29,15 +29,33 @@ const styles = theme => ({
   profileImage: {
     maxWidth: 200,
     height: 200,
-    borderRadius: '50%',
-    objectFit: 'cover'
+    borderRadius: '5%',
+    objectFit: 'cover',
+    ['@media only screen and (max-width: 600px)']: {
+      height: 100,
+      position: 'relative',
+      borderRadius: '5%'
+    }
   },
   dialogContent: {
     padding: 20
   },
   closeButton: {
     position: 'absolute',
-    left: '90%'
+    left: '90%',
+    ['@media only screen and (max-width: 600px)']: {
+      left: '85%'
+    }
+  },
+  handle: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: '15px'
+    }
+  },
+  date: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: '12px'
+    }
   },
   expandButton: {
     position: 'absolute',
@@ -115,12 +133,13 @@ class ScreamDialog extends Component {
             component={Link}
             color='primary'
             variant='h5'
+            className={classes.handle}
             to={`/users/${userHandle}`}
           >
             @{userHandle}
           </Typography>
           <hr className={classes.invisibleSeparator} />
-          <Typography variant='body2' color='textSecondary'>
+          <Typography className={classes.date} variant='body2' color='textSecondary'>
             {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
           </Typography>
           <hr className={classes.invisibleSeparator} />

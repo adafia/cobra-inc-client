@@ -14,11 +14,25 @@ const styles = theme => ({
     maxWidth: '100%',
     height: 100,
     objectFit: 'cover',
-    borderRadius: '50%'
+    borderRadius: '50%',
+    ['@media only screen and (max-width: 600px)']: {
+      height: 50,
+      borderRadius: '25%'
+    }
   },
   commentData: {
     marginLeft: 20
-  }
+  },
+  handle: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: '15px'
+    }
+  },
+  date: {
+    ['@media only screen and (max-width: 600px)']: {
+      fontSize: '12px'
+    }
+  },
 });
 
 class Comments extends Component {
@@ -44,12 +58,13 @@ class Comments extends Component {
                       <Typography
                         variant='h5'
                         component={Link}
+                        className={classes.handle}
                         to={`/users/${userHandle}`}
                         color='primary'
                       >
                         {userHandle}
                       </Typography>
-                      <Typography variant='body2' color='textSecondary'>
+                      <Typography variant='body2' className={classes.date} color='textSecondary'>
                         {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                       </Typography>
                       <hr className={classes.invisibleSeparator} />
